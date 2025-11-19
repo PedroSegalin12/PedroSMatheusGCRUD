@@ -184,13 +184,21 @@ $auth = AuthService::user();
                 <i class="bi bi-people"></i>
                 <span>Usuários</span>
             </a>
-            <a class="nav-link" href="/admin/products" data-page="products">
+            <a class="nav-link" href="/admin/carros" data-page="carros">
                 <i class="bi bi-box-seam"></i>
-                <span>Produtos</span>
+                <span>Carros</span>
             </a>
-            <a class="nav-link" href="/admin/categories" data-page="categories">
+
+            <a class="nav-link" href="/admin/motos" data-page="motos">
                 <i class="bi bi-box-seam"></i>
-                <span>Categorias</span>
+                <span>Motos</span>
+            <a class="nav-link" href="/admin/montadoras" data-page="montadoras">
+                <i class="bi bi-box-seam"></i>
+                <span>montadoras</span>
+            </a>
+            <a class="nav-link" href="/admin/testdrives" data-page="testdrives">
+                <i class="bi bi-box-seam"></i>
+                <span>Test-Drives</span>
             </a>
         </nav>
     </aside>

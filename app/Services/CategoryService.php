@@ -20,3 +20,5 @@ class CategoryService {
         return new Category($id, $name, $text);
     }
 }
+
+//Loucura

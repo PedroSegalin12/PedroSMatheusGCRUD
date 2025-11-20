@@ -7,30 +7,30 @@
         <form method="post" action="/admin/carros/store" enctype="multipart/form-data" class="">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="nome" class="form-label">Nome do Carro</label>
-                    <input type="text" class="form-control" id="nome" name="nome"
-                        placeholder="Digite o nome do carro" value="<?= $this->e($old['nome'] ?? '') ?>" required>
-                    <?php if (!empty($errors['nome'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['nome']) ?></div>
+                    <label for="titulo" class="form-label">Título do Carro</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo"
+                        placeholder="Digite o título do carro" value="<?= $this->e($old['titulo'] ?? '') ?>" required>
+                    <?php if (!empty($errors['titulo'])): ?>
+                        <div class="text-danger"><?= $this->e($errors['titulo']) ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="ano" class="form-label">Ano do Carro</label>
-                    <input type="number" class="form-control" id="ano" name="ano"
-                        placeholder="Digite o ano do carro" value="<?= $this->e($old['ano'] ?? '') ?>" required>
-                    <?php if (!empty($errors['ano'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['ano']) ?></div>
+                    <label for="ano_publicacao" class="form-label">Ano de Publicação</label>
+                    <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao"
+                        placeholder="Digite o ano de publicação" value="<?= $this->e($old['ano_publicacao'] ?? '') ?>">
+                    <?php if (!empty($errors['ano_publicacao'])): ?>
+                        <div class="text-danger"><?= $this->e($errors['ano_publicacao']) ?></div>
                     <?php endif; ?>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="categoria" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria"
-                        placeholder="Ex: SUV, Hatch" value="<?= $this->e($old['categoria'] ?? '') ?>" required>
-                    <?php if (!empty($errors['categoria'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['categoria']) ?></div>
+                    <label for="genero" class="form-label">Gênero</label>
+                    <input type="text" class="form-control" id="genero" name="genero"
+                        placeholder="Ex: SUV, Hatch" value="<?= $this->e($old['genero'] ?? '') ?>">
+                    <?php if (!empty($errors['genero'])): ?>
+                        <div class="text-danger"><?= $this->e($errors['genero']) ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="col-md-6 mb-3">

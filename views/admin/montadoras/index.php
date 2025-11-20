@@ -1,11 +1,11 @@
-<?php $this->layout('layouts/admin', ['title' => 'montadoras']) ?>
+<?php $this->layout('layouts/admin', ['title' => 'Montadoras']) ?>
 
 <?php $this->start('body') ?>
 <div class="card shadow-sm" id="tableView">
     <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-        <h5 class="mb-0 fw-semibold">Lista de montadoras</h5>
-        <a href="/admin/montadoras/create" class="btn btn-primary" id="btnNewUser">
-            <i class="bi bi-plus-lg"></i> Nova montadora
+        <h5 class="mb-0 fw-semibold">Lista de Montadoras</h5>
+        <a href="/admin/montadoras/create" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Nova Montadora
         </a>
     </div>
     <div class="card-body p-0">
@@ -29,12 +29,10 @@
                         <td><?= $this->e($montadora['telefone']) ?></td>
                         <td>
                             <div class="action-buttons">
-                                <a class="btn btn-sm btn-secondary btn-edit"
-                                   href="/admin/montadoras/show?id=<?= $this->e($montadora['id']) ?>">
+                                <a class="btn btn-sm btn-secondary" href="/admin/montadoras/show?id=<?= $this->e($montadora['id']) ?>">
                                     <i class="bi bi-eye"></i> Ver
                                 </a>
-                                <a class="btn btn-sm btn-primary btn-edit"
-                                   href="/admin/montadoras/edit?id=<?= $this->e($montadora['id']) ?>">
+                                <a class="btn btn-sm btn-primary" href="/admin/montadoras/edit?id=<?= $this->e($montadora['id']) ?>">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 <form class="inline" action="/admin/montadoras/delete" method="post"
@@ -42,8 +40,7 @@
                                     <input type="hidden" name="id" value="<?= $this->e($montadora['id']) ?>">
                                     <?= \App\Core\Csrf::input() ?>
                                     <button type="submit" class="btn btn-sm btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                        Excluir
+                                        <i class="bi bi-trash"></i> Excluir
                                     </button>
                                 </form>
                             </div>
@@ -61,9 +58,8 @@
         <?php if ($i == $page): ?>
             <strong>[<?= $i ?>]</strong>
         <?php else: ?>
-            <a href="/?page=<?= $i ?>"><?= $i ?></a>
+            <a href="/admin/montadoras?page=<?= $i ?>"><?= $i ?></a>
         <?php endif; ?>
     <?php endfor; ?>
 </div>
-
 <?php $this->stop() ?>

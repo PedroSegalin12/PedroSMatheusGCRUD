@@ -1,11 +1,11 @@
-<?php $this->layout('layouts/admin', ['title' => 'carros']) ?>
+<?php $this->layout('layouts/admin', ['title' => 'Carros']) ?>
 
 <?php $this->start('body') ?>
 <div class="card shadow-sm" id="tableView">
     <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-        <h5 class="mb-0 fw-semibold">Lista de carros</h5>
-        <a href="/admin/carros/create" class="btn btn-primary" id="btnNewUser">
-            <i class="bi bi-plus-lg"></i> Novo carro
+        <h5 class="mb-0 fw-semibold">Lista de Carros</h5>
+        <a href="/admin/carros/create" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Novo Carro
         </a>
     </div>
     <div class="card-body p-0">
@@ -14,12 +14,11 @@
                 <thead class="table-light">
                 <tr>
                     <th>ID</th>
-                    <th>Título</th>
-                    <th>Ano de publicação</th>
-                    <th>Gênero</th>
+                    <th>Nome</th>
+                    <th>Ano</th>
+                    <th>Categoria</th>
                     <th>Disponível</th>
-                    <th>Editora</th>
-                    <th>Autor</th>
+                    <th>Montadora</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -27,29 +26,27 @@
                 <?php foreach ($carros as $carro): ?>
                     <tr>
                         <td><?= $this->e($carro['id']) ?></td>
-                        <td><?= $this->e($carro['titulo']) ?></td>
-                        <td><?= $this->e($carro['ano_publicacao']) ?></td>
-                        <td><?= $this->e($carro['genero']) ?></td>
+                        <td><?= $this->e($carro['nome']) ?></td>
+                        <td><?= $this->e($carro['ano']) ?></td>
+                        <td><?= $this->e($carro['categoria']) ?></td>
                         <td><?= $this->e($carro['disponivel'] ? 'Sim' : 'Não') ?></td>
-                        <td><?= $this->e($editoras[$carro['editora_id']] ?? 'Desconhecido') ?></td>
-                        <td><?= $this->e($autores[$carro['autor_id']] ?? 'Desconhecido') ?></td>
+                        <td><?= $this->e($montadoras[$carro['montadora_id']] ?? 'Desconhecido') ?></td>
                         <td>
                             <div class="action-buttons">
-                                <a class="btn btn-sm btn-secondary btn-edit"
+                                <a class="btn btn-sm btn-secondary"
                                    href="/admin/carros/show?id=<?= $this->e($carro['id']) ?>">
                                     <i class="bi bi-eye"></i> Ver
                                 </a>
-                                <a class="btn btn-sm btn-primary btn-edit"
+                                <a class="btn btn-sm btn-primary"
                                    href="/admin/carros/edit?id=<?= $this->e($carro['id']) ?>">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 <form class="inline" action="/admin/carros/delete" method="post"
-                                      onsubmit="return confirm('Tem certeza que deseja excluir este carro? (<?= $this->e($carro['titulo']) ?>)');">
+                                      onsubmit="return confirm('Tem certeza que deseja excluir este carro? (<?= $this->e($carro['nome']) ?>)');">
                                     <input type="hidden" name="id" value="<?= $this->e($carro['id']) ?>">
                                     <?= \App\Core\Csrf::input() ?>
                                     <button type="submit" class="btn btn-sm btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                        Excluir
+                                        <i class="bi bi-trash"></i> Excluir
                                     </button>
                                 </form>
                             </div>
@@ -67,9 +64,8 @@
         <?php if ($i == $page): ?>
             <strong>[<?= $i ?>]</strong>
         <?php else: ?>
-            <a href="/?page=<?= $i ?>"><?= $i ?></a>
+            <a href="/admin/carros?page=<?= $i ?>"><?= $i ?></a>
         <?php endif; ?>
     <?php endfor; ?>
 </div>
-
 <?php $this->stop() ?>

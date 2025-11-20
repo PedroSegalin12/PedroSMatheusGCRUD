@@ -1,23 +1,23 @@
-<?php $this->layout('layouts/admin', ['title' => 'Novo Carro']) ?>
+<?php $this->layout('layouts/admin', ['title' => 'Nova Moto']) ?>
 
 <?php $this->start('body') ?>
 <div class="card shadow-sm" id="formView">
-    <?php $this->insert('partials/admin/form/header', ['title' => 'Novo Carro']) ?>
+    <?php $this->insert('partials/admin/form/header', ['title' => 'Nova Moto']) ?>
     <div class="card-body">
-        <form method="post" action="/admin/carros/store" enctype="multipart/form-data" class="">
+        <form method="post" action="/admin/motos/store" enctype="multipart/form-data" class="">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="nome" class="form-label">Nome do Carro</label>
-                    <input type="text" class="form-control" id="nome" name="nome"
-                        placeholder="Digite o nome do carro" value="<?= $this->e($old['nome'] ?? '') ?>" required>
-                    <?php if (!empty($errors['nome'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['nome']) ?></div>
+                    <label for="modelo" class="form-label">Modelo</label>
+                    <input type="text" class="form-control" id="modelo" name="modelo"
+                           placeholder="Digite o modelo" value="<?= $this->e($old['modelo'] ?? '') ?>" required>
+                    <?php if (!empty($errors['modelo'])): ?>
+                        <div class="text-danger"><?= $this->e($errors['modelo']) ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="ano" class="form-label">Ano do Carro</label>
+                    <label for="ano" class="form-label">Ano</label>
                     <input type="number" class="form-control" id="ano" name="ano"
-                        placeholder="Digite o ano do carro" value="<?= $this->e($old['ano'] ?? '') ?>" required>
+                           placeholder="Digite o ano" value="<?= $this->e($old['ano'] ?? '') ?>" required>
                     <?php if (!empty($errors['ano'])): ?>
                         <div class="text-danger"><?= $this->e($errors['ano']) ?></div>
                     <?php endif; ?>
@@ -26,12 +26,11 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="categoria" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria"
-                        placeholder="Ex: SUV, Hatch" value="<?= $this->e($old['categoria'] ?? '') ?>" required>
-                    <?php if (!empty($errors['categoria'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['categoria']) ?></div>
-                    <?php endif; ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="disponivel" name="disponivel"
+                               value="1" <?= !empty($old['disponivel']) ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="disponivel">Disponível</label>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="montadora_id" class="form-label">Montadora</label>
@@ -49,12 +48,6 @@
                 </div>
             </div>
 
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="disponivel" name="disponivel"
-                    value="1" <?= !empty($old['disponivel']) ? 'checked' : '' ?>>
-                <label class="form-check-label" for="disponivel">Disponível</label>
-            </div>
-
             <div class="d-flex gap-3">
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-check-lg"></i> Salvar
@@ -62,7 +55,7 @@
                 <button type="reset" class="btn btn-secondary">
                     <i class="bi bi-x-lg"></i> Limpar
                 </button>
-                <a href="/admin/carros" class="btn align-self-end">
+                <a href="/admin/motos" class="btn align-self-end">
                     <i class="bi bi-x-lg"></i> Cancelar
                 </a>
             </div>

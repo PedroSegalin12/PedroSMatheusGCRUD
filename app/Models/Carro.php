@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class carro
+class Carro
 {
     public ?int $id;
     public string $titulo;
@@ -17,9 +17,9 @@ class carro
         $this->id = $id;
         $this->titulo = $titulo;
         $this->ano_publicacao = $ano_publicacao;
-        $this->editora_id = $editora_id;
         $this->genero = $genero;
         $this->disponivel = $disponivel;
+        $this->editora_id = $editora_id;
         $this->autor_id = $autor_id;
     }
 }

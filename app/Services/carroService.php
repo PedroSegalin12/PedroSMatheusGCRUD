@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\carro;
 
-class carroservice {
+class carroService {
     public function validate(array $data): array {
         $errors = [];
         $titulo = trim($data['titulo'] ?? '');
@@ -18,19 +19,18 @@ class carroservice {
         if ($autor_id === '') $errors['autor_id'] = 'Autor é obrigatório';
         if ($genero === '') $errors['genero'] = 'Gênero é obrigatório';
 
-
         return $errors;
     }
-
 
     public function make(array $data): carro {
         $id = isset($data['id']) ? (int)$data['id'] : null;
         $titulo = trim($data['titulo'] ?? '');
         $ano_publicacao = (int)($data['ano_publicacao'] ?? 0);
         $editora_id = (int)($data['editora_id'] ?? 0);
-        $autor_id = (int)($data['autor_id'] ?? 0);
+        $autor_id = (int)($data['autor_id'] ?? 0); // agora existe
         $genero = trim($data['genero'] ?? '');
-        $disponivel = (bool)($data['disponivel'] ?? true);
+        $disponivel = isset($data['disponivel']) ? (bool)$data['disponivel'] : true;
+
         return new carro($id, $titulo, $ano_publicacao, $genero, $disponivel, $editora_id, $autor_id);
     }
 }

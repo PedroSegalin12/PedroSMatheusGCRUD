@@ -5,24 +5,24 @@ namespace App\Controllers\Admin;
 use App\Core\Csrf;
 use App\Core\Flash;
 use App\Core\View;
-use App\Repositories\motoRepository;
-use App\Repositories\montadoraRepository;
-use App\Services\motoService;
+use App\Repositories\MotoRepository;
+use App\Repositories\MontadoraRepository;
+use App\Services\MotoService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class motoController
+class MotoController
 {
     private View $view;
-    private motoRepository $repo;
-    private motoService $service;
+    private MotoRepository $repo;
+    private MotoService $service;
 
     public function __construct()
     {
         $this->view = new View();
-        $this->repo = new motoRepository();
-        $this->service = new motoService();
+        $this->repo = new MotoRepository();
+        $this->service = new MotoService();
     }
 
     public function index(Request $request): Response
@@ -34,7 +34,7 @@ class motoController
         $pages = (int)ceil($total / $perPage);
 
         // Puxar todas as montadoras e indexar por id
-        $montadoraRepo = new montadoraRepository();
+        $montadoraRepo = new MontadoraRepository();
         $montadorasList = $montadoraRepo->findAll();
         $montadoras = [];
         foreach ($montadorasList as $montadora) {
@@ -47,7 +47,7 @@ class motoController
 
     public function create(): Response
     {
-        $montadoraRepo = new montadoraRepository();
+        $montadoraRepo = new MontadoraRepository();
         $montadoras = $montadoraRepo->findAll();
 
         $html = $this->view->render('admin/motos/create', [
@@ -63,7 +63,7 @@ class motoController
         if (!Csrf::validate($request->request->get('_csrf'))) return new Response('Token CSRF inválido', 419);
         $errors = $this->service->validate($request->request->all());
         if ($errors) {
-            $montadoraRepo = new montadoraRepository();
+            $montadoraRepo = new MontadoraRepository();
             $montadoras = $montadoraRepo->findAll();
 
             $html = $this->view->render('admin/motos/create', [
@@ -94,7 +94,7 @@ class motoController
         $moto = $this->repo->find($id);
         if (!$moto) return new Response('Moto não encontrada', 404);
 
-        $montadoraRepo = new montadoraRepository();
+        $montadoraRepo = new MontadoraRepository();
         $montadoras = $montadoraRepo->findAll();
 
         $html = $this->view->render('admin/motos/edit', [
@@ -112,7 +112,7 @@ class motoController
         $data = $request->request->all();
         $errors = $this->service->validate($data);
         if ($errors) {
-            $montadoraRepo = new montadoraRepository();
+            $montadoraRepo = new MontadoraRepository();
             $montadoras = $montadoraRepo->findAll();
 
             $html = $this->view->render('admin/motos/edit', [

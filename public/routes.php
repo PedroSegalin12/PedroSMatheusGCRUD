@@ -2,11 +2,11 @@
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Admin\CategoryController;
-use App\Controllers\Admin\carroController;
+use App\Controllers\Admin\CarroController;
 use App\Controllers\Admin\UserController;
-use App\Controllers\Admin\testdriveController;
-use App\Controllers\Admin\montadoraController;
-use App\Controllers\Admin\motoController;
+use App\Controllers\Admin\TestdriveController;
+use App\Controllers\Admin\MontadoraController;
+use App\Controllers\Admin\MotoController;
 use App\Controllers\AuthController;
 use App\Controllers\SiteController;
 use App\Middleware\AuthMiddleware;
@@ -36,46 +36,46 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
 
         // Carros
         $group->addGroup('/carros', function (FastRoute\RouteCollector $carros) {
-            $carros->addRoute('GET', '', [carroController::class, 'index']);
-            $carros->addRoute('GET', '/create', [carroController::class, 'create']);
-            $carros->addRoute('POST', '/store', [carroController::class, 'store']);
-            $carros->addRoute('GET', '/show', [carroController::class, 'show']);
-            $carros->addRoute('GET', '/edit', [carroController::class, 'edit']);
-            $carros->addRoute('POST', '/update', [carroController::class, 'update']);
-            $carros->addRoute('POST', '/delete', [carroController::class, 'delete']);
+            $carros->addRoute('GET', '', [CarroController::class, 'index']);
+            $carros->addRoute('GET', '/create', [CarroController::class, 'create']);
+            $carros->addRoute('POST', '/store', [CarroController::class, 'store']);
+            $carros->addRoute('GET', '/show', [CarroController::class, 'show']);
+            $carros->addRoute('GET', '/edit', [CarroController::class, 'edit']);
+            $carros->addRoute('POST', '/update', [CarroController::class, 'update']);
+            $carros->addRoute('POST', '/delete', [CarroController::class, 'delete']);
         });
 
         // Motos
         $group->addGroup('/motos', function (FastRoute\RouteCollector $motos) {
-            $motos->addRoute('GET', '', [motoController::class, 'index']);
-            $motos->addRoute('GET', '/create', [motoController::class, 'create']);
-            $motos->addRoute('POST', '/store', [motoController::class, 'store']);
-            $motos->addRoute('GET', '/show', [motoController::class, 'show']);
-            $motos->addRoute('GET', '/edit', [motoController::class, 'edit']);
-            $motos->addRoute('POST', '/update', [motoController::class, 'update']);
-            $motos->addRoute('POST', '/delete', [motoController::class, 'delete']);
+            $motos->addRoute('GET', '', [MotoController::class, 'index']);
+            $motos->addRoute('GET', '/create', [MotoController::class, 'create']);
+            $motos->addRoute('POST', '/store', [MotoController::class, 'store']);
+            $motos->addRoute('GET', '/show', [MotoController::class, 'show']);
+            $motos->addRoute('GET', '/edit', [MotoController::class, 'edit']);
+            $motos->addRoute('POST', '/update', [MotoController::class, 'update']);
+            $motos->addRoute('POST', '/delete', [MotoController::class, 'delete']);
         });
 
         // Montadoras
         $group->addGroup('/montadoras', function (FastRoute\RouteCollector $montadoras) {
-            $montadoras->addRoute('GET', '', [montadoraController::class, 'index']);
-            $montadoras->addRoute('GET', '/create', [montadoraController::class, 'create']);
-            $montadoras->addRoute('POST', '/store', [montadoraController::class, 'store']);
-            $montadoras->addRoute('GET', '/show', [montadoraController::class, 'show']);
-            $montadoras->addRoute('GET', '/edit', [montadoraController::class, 'edit']);
-            $montadoras->addRoute('POST', '/update', [montadoraController::class, 'update']);
-            $montadoras->addRoute('POST', '/delete', [montadoraController::class, 'delete']);
+            $montadoras->addRoute('GET', '', [MontadoraController::class, 'index']);
+            $montadoras->addRoute('GET', '/create', [MontadoraController::class, 'create']);
+            $montadoras->addRoute('POST', '/store', [MontadoraController::class, 'store']);
+            $montadoras->addRoute('GET', '/show', [MontadoraController::class, 'show']);
+            $montadoras->addRoute('GET', '/edit', [MontadoraController::class, 'edit']);
+            $montadoras->addRoute('POST', '/update', [MontadoraController::class, 'update']);
+            $montadoras->addRoute('POST', '/delete', [MontadoraController::class, 'delete']);
         });
 
         // Testdrives
         $group->addGroup('/testdrives', function (FastRoute\RouteCollector $testdrives) {
-            $testdrives->addRoute('GET', '', [testdriveController::class, 'index']);
-            $testdrives->addRoute('GET', '/create', [testdriveController::class, 'create']);
-            $testdrives->addRoute('POST', '/store', [testdriveController::class, 'store']);
-            $testdrives->addRoute('GET', '/show', [testdriveController::class, 'show']);
-            $testdrives->addRoute('GET', '/edit', [testdriveController::class, 'edit']);
-            $testdrives->addRoute('POST', '/update', [testdriveController::class, 'update']);
-            $testdrives->addRoute('POST', '/delete', [testdriveController::class, 'delete']);
+            $testdrives->addRoute('GET', '', [TestdriveController::class, 'index']);
+            $testdrives->addRoute('GET', '/create', [TestdriveController::class, 'create']);
+            $testdrives->addRoute('POST', '/store', [TestdriveController::class, 'store']);
+            $testdrives->addRoute('GET', '/show', [TestdriveController::class, 'show']);
+            $testdrives->addRoute('GET', '/edit', [TestdriveController::class, 'edit']);
+            $testdrives->addRoute('POST', '/update', [TestdriveController::class, 'update']);
+            $testdrives->addRoute('POST', '/delete', [TestdriveController::class, 'delete']);
         });
 
         // Usuários

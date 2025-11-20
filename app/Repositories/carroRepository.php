@@ -35,15 +35,14 @@ class CarroRepository
     public function create(Carro $carro): int
     {
         $stmt = Database::getConnection()->prepare(
-            "INSERT INTO carros (titulo, ano_publicacao, genero, disponivel, editora_id, autor_id) VALUES (?, ?, ?, ?, ?, ?)"
+            "INSERT INTO carros (titulo, ano_publicacao, genero, disponivel, montadora_id) VALUES (?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $carro->titulo,
             $carro->ano_publicacao,
             $carro->genero,
             $carro->disponivel ? 1 : 0,
-            $carro->editora_id,
-            $carro->autor_id
+            $carro->montadora_id
         ]);
         return (int)Database::getConnection()->lastInsertId();
     }
@@ -51,15 +50,14 @@ class CarroRepository
     public function update(Carro $carro): bool
     {
         $stmt = Database::getConnection()->prepare(
-            "UPDATE carros SET titulo = ?, ano_publicacao = ?, genero = ?, disponivel = ?, editora_id = ?, autor_id = ? WHERE id = ?"
+            "UPDATE carros SET titulo = ?, ano_publicacao = ?, genero = ?, disponivel = ?, montadora_id = ? WHERE id = ?"
         );
         return $stmt->execute([
             $carro->titulo,
             $carro->ano_publicacao,
             $carro->genero,
             $carro->disponivel ? 1 : 0,
-            $carro->editora_id,
-            $carro->autor_id,
+            $carro->montadora_id,
             $carro->id
         ]);
     }

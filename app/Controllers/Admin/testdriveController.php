@@ -5,23 +5,23 @@ namespace App\Controllers\Admin;
 use App\Core\View;
 use App\Core\Csrf;
 use App\Core\Flash;
-use App\Repositories\testdriveRepository;
-use App\Services\testdriveService;
+use App\Repositories\TestdriveRepository;
+use App\Services\TestdriveService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class testdriveController
+class TestdriveController
 {
     private View $view;
-    private testdriveRepository $repo;
-    private testdriveService $service;
+    private TestdriveRepository $repo;
+    private TestdriveService $service;
 
     public function __construct()
     {
         $this->view = new View();
-        $this->repo = new testdriveRepository();
-        $this->service = new testdriveService();
+        $this->repo = new TestdriveRepository();
+        $this->service = new TestdriveService();
     }
 
     public function index(Request $request): Response

@@ -9,17 +9,15 @@ class Carro
     public ?int $ano_publicacao;
     public ?string $genero;
     public bool $disponivel;
-    public int $editora_id;
-    public int $autor_id;
+    public int $montadora_id;
 
-    public function __construct(?int $id, string $titulo, ?int $ano_publicacao, ?string $genero, bool $disponivel, int $editora_id, int $autor_id)
+    public function __construct(?int $id, string $titulo, ?int $ano_publicacao, ?string $genero, bool $disponivel, int $montadora_id)
     {
         $this->id = $id;
         $this->titulo = $titulo;
         $this->ano_publicacao = $ano_publicacao;
         $this->genero = $genero;
         $this->disponivel = $disponivel;
-        $this->editora_id = $editora_id;
-        $this->autor_id = $autor_id;
+        $this->montadora_id = $montadora_id;
     }
 }

@@ -53,6 +53,7 @@ class MotoController
         $html = $this->view->render('admin/motos/create', [
             'csrf' => Csrf::token(),
             'errors' => [],
+            'old' => [],
             'montadoras' => $montadoras
         ]);
         return new Response($html);
@@ -84,6 +85,11 @@ class MotoController
         $id = (int)$request->query->get('id', 0);
         $moto = $this->repo->find($id);
         if (!$moto) return new Response('Moto não encontrada', 404);
+        
+        $montadoraRepo = new MontadoraRepository();
+        $montadora = $montadoraRepo->find($moto['montadora_id']);
+        $moto['montadora_nome'] = $montadora['nome'] ?? 'Desconhecida';
+        
         $html = $this->view->render('admin/motos/show', ['moto' => $moto]);
         return new Response($html);
     }

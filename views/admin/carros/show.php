@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Montadora:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e($carro['montadora_nome'] ?? 'Desconhecida') ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e($carro['Montadora_nome'] ?? 'Desconhecida') ?>" readonly>
                 </div>
                 <div class="text-end">
                     <a href="javascript:history.back()" class="btn btn-secondary">Voltar</a>

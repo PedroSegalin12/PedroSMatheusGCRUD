@@ -28,7 +28,7 @@
                             <td><?= $this->e($moto['modelo']) ?></td>
                             <td><?= $this->e($moto['ano']) ?></td>
                             <td><?= $this->e($moto['disponivel'] ? 'Sim' : 'Não') ?></td>
-                            <td><?= $this->e($montadoras[$moto['montadora_id']]['nome'] ?? 'Desconhecida') ?></td>
+                            <td><?= $this->e($Montadoras[$moto['Montadora_id']]['nome'] ?? 'Desconhecida') ?></td>
                             <td>
                                 <div class="action-buttons">
                                     <a class="btn btn-sm btn-secondary" href="/admin/motos/show?id=<?= $this->e($moto['id']) ?>">

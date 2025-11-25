@@ -7,7 +7,7 @@ final class CreateMontadorasTable extends AbstractMigration
 {
     public function change(): void
     {
-        $this->table('montadoras')
+        $this->table('Montadoras')
             ->addColumn('nome', 'string', ['limit' => 100])
             ->addColumn('cidade', 'string', ['limit' => 100])
             ->addColumn('telefone', 'string', ['limit' => 20])

@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Montadora:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e($moto['montadora_nome'] ?? 'Desconhecida') ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e($moto['Montadora_nome'] ?? 'Desconhecida') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Disponível:</strong></label>

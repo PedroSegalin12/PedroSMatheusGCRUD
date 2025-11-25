@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class montadora
+class Montadora
 {
     public ?int $id;
     public string $nome;

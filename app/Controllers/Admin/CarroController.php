@@ -16,14 +16,14 @@ class CarroController
     private View $view;
     private CarroRepository $repo;
     private CarroService $service;
-    private MontadoraRepository $montadoraRepo;
+    private MontadoraRepository $MontadoraRepo;
 
     public function __construct()
     {
         $this->view = new View();
         $this->repo = new CarroRepository();
         $this->service = new CarroService();
-        $this->montadoraRepo = new MontadoraRepository();
+        $this->MontadoraRepo = new MontadoraRepository();
     }
 
     public function index(Request $request): Response
@@ -40,13 +40,13 @@ class CarroController
 
     public function create(): Response
     {
-        $montadoras = $this->montadoraRepo->findAll();
+        $Montadoras = $this->MontadoraRepo->findAll();
 
         $html = $this->view->render('admin/carros/create', [
             'csrf' => Csrf::token(),
             'errors' => [],
             'old' => [],
-            'montadoras' => $montadoras
+            'Montadoras' => $Montadoras
         ]);
         return new Response($html);
     }
@@ -61,12 +61,12 @@ class CarroController
         $errors = $this->service->validate($data);
 
         if ($errors) {
-            $montadoras = $this->montadoraRepo->findAll();
+            $Montadoras = $this->MontadoraRepo->findAll();
             $html = $this->view->render('admin/carros/create', [
                 'csrf' => Csrf::token(),
                 'errors' => $errors,
                 'old' => $data,
-                'montadoras' => $montadoras
+                'Montadoras' => $Montadoras
             ]);
             return new Response($html, 422);
         }
@@ -83,8 +83,8 @@ class CarroController
         $carro = $this->repo->find($id);
         if (!$carro) return new Response('Carro não encontrado', 404);
 
-        $montadora = $this->montadoraRepo->find($carro['montadora_id']);
-        $carro['montadora_nome'] = $montadora['nome'] ?? 'Desconhecida';
+        $Montadora = $this->MontadoraRepo->find($carro['Montadora_id']);
+        $carro['Montadora_nome'] = $Montadora['nome'] ?? 'Desconhecida';
 
         $html = $this->view->render('admin/carros/show', ['carro' => $carro]);
         return new Response($html);
@@ -96,14 +96,14 @@ class CarroController
         $carro = $this->repo->find($id);
         if (!$carro) return new Response('Carro não encontrado', 404);
 
-        $montadoras = $this->montadoraRepo->findAll();
+        $Montadoras = $this->MontadoraRepo->findAll();
 
         $html = $this->view->render('admin/carros/edit', [
             'csrf' => Csrf::token(),
             'errors' => [],
             'carro' => $carro,
             'old' => $carro,
-            'montadoras' => $montadoras
+            'Montadoras' => $Montadoras
         ]);
         return new Response($html);
     }
@@ -118,13 +118,13 @@ class CarroController
         $errors = $this->service->validate($data);
 
         if ($errors) {
-            $montadoras = $this->montadoraRepo->findAll();
+            $Montadoras = $this->MontadoraRepo->findAll();
             $html = $this->view->render('admin/carros/edit', [
                 'csrf' => Csrf::token(),
                 'errors' => $errors,
                 'carro' => array_merge($this->repo->find((int)$data['id']), $data),
                 'old' => $data,
-                'montadoras' => $montadoras
+                'Montadoras' => $Montadoras
             ]);
             return new Response($html, 422);
         }

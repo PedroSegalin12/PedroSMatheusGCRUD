@@ -192,9 +192,9 @@ $auth = AuthService::user();
             <a class="nav-link" href="/admin/motos" data-page="motos">
                 <i class="bi bi-box-seam"></i>
                 <span>Motos</span>
-            <a class="nav-link" href="/admin/montadoras" data-page="montadoras">
+            <a class="nav-link" href="/admin/Montadoras" data-page="Montadoras">
                 <i class="bi bi-box-seam"></i>
-                <span>montadoras</span>
+                <span>Montadoras</span>
             </a>
             <a class="nav-link" href="/admin/testdrives" data-page="testdrives">
                 <i class="bi bi-box-seam"></i>

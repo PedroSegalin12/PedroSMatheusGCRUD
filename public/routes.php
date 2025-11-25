@@ -57,14 +57,14 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         });
 
         // Montadoras
-        $group->addGroup('/montadoras', function (FastRoute\RouteCollector $montadoras) {
-            $montadoras->addRoute('GET', '', [MontadoraController::class, 'index']);
-            $montadoras->addRoute('GET', '/create', [MontadoraController::class, 'create']);
-            $montadoras->addRoute('POST', '/store', [MontadoraController::class, 'store']);
-            $montadoras->addRoute('GET', '/show', [MontadoraController::class, 'show']);
-            $montadoras->addRoute('GET', '/edit', [MontadoraController::class, 'edit']);
-            $montadoras->addRoute('POST', '/update', [MontadoraController::class, 'update']);
-            $montadoras->addRoute('POST', '/delete', [MontadoraController::class, 'delete']);
+        $group->addGroup('/Montadoras', function (FastRoute\RouteCollector $Montadoras) {
+            $Montadoras->addRoute('GET', '', [MontadoraController::class, 'index']);
+            $Montadoras->addRoute('GET', '/create', [MontadoraController::class, 'create']);
+            $Montadoras->addRoute('POST', '/store', [MontadoraController::class, 'store']);
+            $Montadoras->addRoute('GET', '/show', [MontadoraController::class, 'show']);
+            $Montadoras->addRoute('GET', '/edit', [MontadoraController::class, 'edit']);
+            $Montadoras->addRoute('POST', '/update', [MontadoraController::class, 'update']);
+            $Montadoras->addRoute('POST', '/delete', [MontadoraController::class, 'delete']);
         });
 
         // Testdrives

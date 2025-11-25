@@ -4,7 +4,7 @@
 <div class="card shadow-sm" id="tableView">
     <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
         <h5 class="mb-0 fw-semibold">Lista de Montadoras</h5>
-        <a href="/admin/montadoras/create" class="btn btn-primary">
+        <a href="/admin/Montadoras/create" class="btn btn-primary">
             <i class="bi bi-plus-lg"></i> Nova Montadora
         </a>
     </div>
@@ -21,23 +21,23 @@
                 </tr>
                 </thead>
                 <tbody id="tableBody">
-                <?php foreach ($montadoras as $montadora): ?>
+                <?php foreach ($Montadoras as $Montadora): ?>
                     <tr>
-                        <td><?= $this->e($montadora['id']) ?></td>
-                        <td><?= $this->e($montadora['nome']) ?></td>
-                        <td><?= $this->e($montadora['cidade']) ?></td>
-                        <td><?= $this->e($montadora['telefone']) ?></td>
+                        <td><?= $this->e($Montadora['id']) ?></td>
+                        <td><?= $this->e($Montadora['nome']) ?></td>
+                        <td><?= $this->e($Montadora['cidade']) ?></td>
+                        <td><?= $this->e($Montadora['telefone']) ?></td>
                         <td>
                             <div class="action-buttons">
-                                <a class="btn btn-sm btn-secondary" href="/admin/montadoras/show?id=<?= $this->e($montadora['id']) ?>">
+                                <a class="btn btn-sm btn-secondary" href="/admin/Montadoras/show?id=<?= $this->e($Montadora['id']) ?>">
                                     <i class="bi bi-eye"></i> Ver
                                 </a>
-                                <a class="btn btn-sm btn-primary" href="/admin/montadoras/edit?id=<?= $this->e($montadora['id']) ?>">
+                                <a class="btn btn-sm btn-primary" href="/admin/Montadoras/edit?id=<?= $this->e($Montadora['id']) ?>">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
-                                <form class="inline" action="/admin/montadoras/delete" method="post"
-                                      onsubmit="return confirm('Tem certeza que deseja excluir esta montadora? (<?= $this->e($montadora['nome']) ?>)');">
-                                    <input type="hidden" name="id" value="<?= $this->e($montadora['id']) ?>">
+                                <form class="inline" action="/admin/Montadoras/delete" method="post"
+                                      onsubmit="return confirm('Tem certeza que deseja excluir esta Montadora? (<?= $this->e($Montadora['nome']) ?>)');">
+                                    <input type="hidden" name="id" value="<?= $this->e($Montadora['id']) ?>">
                                     <?= \App\Core\Csrf::input() ?>
                                     <button type="submit" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i> Excluir
@@ -58,7 +58,7 @@
         <?php if ($i == $page): ?>
             <strong>[<?= $i ?>]</strong>
         <?php else: ?>
-            <a href="/admin/montadoras?page=<?= $i ?>"><?= $i ?></a>
+            <a href="/admin/Montadoras?page=<?= $i ?>"><?= $i ?></a>
         <?php endif; ?>
     <?php endfor; ?>
 </div>

@@ -30,7 +30,7 @@
                         <td><?= $this->e($carro['ano']) ?></td>
                         <td><?= $this->e($carro['categoria']) ?></td>
                         <td><?= $this->e($carro['disponivel'] ? 'Sim' : 'Não') ?></td>
-                        <td><?= $this->e($montadoras[$carro['montadora_id']] ?? 'Desconhecido') ?></td>
+                        <td><?= $this->e($Montadoras[$carro['Montadora_id']] ?? 'Desconhecido') ?></td>
                         <td>
                             <div class="action-buttons">
                                 <a class="btn btn-sm btn-secondary"

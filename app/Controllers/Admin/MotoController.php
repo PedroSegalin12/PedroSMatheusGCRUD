@@ -33,28 +33,28 @@ class MotoController
         $motos = $this->repo->paginate($page, $perPage);
         $pages = (int)ceil($total / $perPage);
 
-        // Puxar todas as montadoras e indexar por id
-        $montadoraRepo = new MontadoraRepository();
-        $montadorasList = $montadoraRepo->findAll();
-        $montadoras = [];
-        foreach ($montadorasList as $montadora) {
-            $montadoras[$montadora['id']] = $montadora;
+        // Puxar todas as Montadoras e indexar por id
+        $MontadoraRepo = new MontadoraRepository();
+        $MontadorasList = $MontadoraRepo->findAll();
+        $Montadoras = [];
+        foreach ($MontadorasList as $Montadora) {
+            $Montadoras[$Montadora['id']] = $Montadora;
         }
 
-        $html = $this->view->render('admin/motos/index', compact('motos', 'page', 'pages', 'montadoras'));
+        $html = $this->view->render('admin/motos/index', compact('motos', 'page', 'pages', 'Montadoras'));
         return new Response($html);
     }
 
     public function create(): Response
     {
-        $montadoraRepo = new MontadoraRepository();
-        $montadoras = $montadoraRepo->findAll();
+        $MontadoraRepo = new MontadoraRepository();
+        $Montadoras = $MontadoraRepo->findAll();
 
         $html = $this->view->render('admin/motos/create', [
             'csrf' => Csrf::token(),
             'errors' => [],
             'old' => [],
-            'montadoras' => $montadoras
+            'Montadoras' => $Montadoras
         ]);
         return new Response($html);
     }
@@ -64,14 +64,14 @@ class MotoController
         if (!Csrf::validate($request->request->get('_csrf'))) return new Response('Token CSRF inválido', 419);
         $errors = $this->service->validate($request->request->all());
         if ($errors) {
-            $montadoraRepo = new MontadoraRepository();
-            $montadoras = $montadoraRepo->findAll();
+            $MontadoraRepo = new MontadoraRepository();
+            $Montadoras = $MontadoraRepo->findAll();
 
             $html = $this->view->render('admin/motos/create', [
                 'csrf' => Csrf::token(),
                 'errors' => $errors,
                 'old' => $request->request->all(),
-                'montadoras' => $montadoras
+                'Montadoras' => $Montadoras
             ]);
             return new Response($html, 422);
         }
@@ -86,9 +86,9 @@ class MotoController
         $moto = $this->repo->find($id);
         if (!$moto) return new Response('Moto não encontrada', 404);
         
-        $montadoraRepo = new MontadoraRepository();
-        $montadora = $montadoraRepo->find($moto['montadora_id']);
-        $moto['montadora_nome'] = $montadora['nome'] ?? 'Desconhecida';
+        $MontadoraRepo = new MontadoraRepository();
+        $Montadora = $MontadoraRepo->find($moto['Montadora_id']);
+        $moto['Montadora_nome'] = $Montadora['nome'] ?? 'Desconhecida';
         
         $html = $this->view->render('admin/motos/show', ['moto' => $moto]);
         return new Response($html);
@@ -100,14 +100,14 @@ class MotoController
         $moto = $this->repo->find($id);
         if (!$moto) return new Response('Moto não encontrada', 404);
 
-        $montadoraRepo = new MontadoraRepository();
-        $montadoras = $montadoraRepo->findAll();
+        $MontadoraRepo = new MontadoraRepository();
+        $Montadoras = $MontadoraRepo->findAll();
 
         $html = $this->view->render('admin/motos/edit', [
             'moto' => $moto,
             'csrf' => Csrf::token(),
             'errors' => [],
-            'montadoras' => $montadoras
+            'Montadoras' => $Montadoras
         ]);
         return new Response($html);
     }
@@ -118,14 +118,14 @@ class MotoController
         $data = $request->request->all();
         $errors = $this->service->validate($data);
         if ($errors) {
-            $montadoraRepo = new MontadoraRepository();
-            $montadoras = $montadoraRepo->findAll();
+            $MontadoraRepo = new MontadoraRepository();
+            $Montadoras = $MontadoraRepo->findAll();
 
             $html = $this->view->render('admin/motos/edit', [
                 'moto' => array_merge($this->repo->find((int)$data['id']), $data),
                 'csrf' => Csrf::token(),
                 'errors' => $errors,
-                'montadoras' => $montadoras
+                'Montadoras' => $Montadoras
             ]);
             return new Response($html, 422);
         }

@@ -8,6 +8,8 @@
 
 - Testar conexão e migração de dados
 
+gyug
+
 | Linux: vendor/bin/phinx migrate --dry-run
 
 | Windows: php vendor/bin/phinx migrate --dry-run

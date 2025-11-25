@@ -4,13 +4,13 @@
 <div class="card shadow-sm" id="formView">
     <?php $this->insert('partials/admin/form/header', ['title' => 'Editar Montadora']) ?>
     <div class="card-body">
-        <form method="post" action="/admin/montadoras/update" class="">
-            <input type="hidden" name="id" value="<?= $this->e($montadora['id']) ?>">
+        <form method="post" action="/admin/Montadoras/update" class="">
+            <input type="hidden" name="id" value="<?= $this->e($Montadora['id']) ?>">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome"
-                           placeholder="Digite o nome" value="<?= $this->e($montadora['nome'] ?? '') ?>" required>
+                           placeholder="Digite o nome" value="<?= $this->e($Montadora['nome'] ?? '') ?>" required>
                     <?php if (!empty($errors['nome'])): ?>
                         <div class="text-danger"><?= $this->e($errors['nome']) ?></div>
                     <?php endif; ?>
@@ -18,7 +18,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="cidade" class="form-label">Cidade</label>
                     <input type="text" class="form-control" id="cidade" name="cidade"
-                           placeholder="Digite a cidade" value="<?= $this->e($montadora['cidade'] ?? '') ?>" required>
+                           placeholder="Digite a cidade" value="<?= $this->e($Montadora['cidade'] ?? '') ?>" required>
                     <?php if (!empty($errors['cidade'])): ?>
                         <div class="text-danger"><?= $this->e($errors['cidade']) ?></div>
                     <?php endif; ?>
@@ -26,7 +26,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="telefone" class="form-label">Telefone</label>
                     <input type="text" class="form-control" id="telefone" name="telefone"
-                           placeholder="Digite o telefone" value="<?= $this->e($montadora['telefone'] ?? '') ?>" required>
+                           placeholder="Digite o telefone" value="<?= $this->e($Montadora['telefone'] ?? '') ?>" required>
                     <?php if (!empty($errors['telefone'])): ?>
                         <div class="text-danger"><?= $this->e($errors['telefone']) ?></div>
                     <?php endif; ?>
@@ -40,7 +40,7 @@
                 <button type="reset" class="btn btn-secondary">
                     <i class="bi bi-x-lg"></i> Limpar
                 </button>
-                <a href="/admin/montadoras" class="btn align-self-end">
+                <a href="/admin/Montadoras" class="btn align-self-end">
                     <i class="bi bi-x-lg"></i> Cancelar
                 </a>
             </div>

@@ -33,17 +33,17 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="montadora_id" class="form-label">Montadora</label>
-                    <select class="form-select" id="montadora_id" name="montadora_id" required>
-                        <option value="">Selecione uma montadora</option>
-                        <?php foreach ($montadoras as $montadora): ?>
-                            <option value="<?= $montadora['id'] ?>" <?= $this->e(($old['montadora_id'] ?? '') == $montadora['id'] ? 'selected' : '') ?>>
-                                <?= $this->e($montadora['nome']) ?>
+                    <label for="Montadora_id" class="form-label">Montadora</label>
+                    <select class="form-select" id="Montadora_id" name="Montadora_id" required>
+                        <option value="">Selecione uma Montadora</option>
+                        <?php foreach ($Montadoras as $Montadora): ?>
+                            <option value="<?= $Montadora['id'] ?>" <?= $this->e(($old['Montadora_id'] ?? '') == $Montadora['id'] ? 'selected' : '') ?>>
+                                <?= $this->e($Montadora['nome']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <?php if (!empty($errors['montadora_id'])): ?>
-                        <div class="text-danger"><?= $this->e($errors['montadora_id']) ?></div>
+                    <?php if (!empty($errors['Montadora_id'])): ?>
+                        <div class="text-danger"><?= $this->e($errors['Montadora_id']) ?></div>
                     <?php endif; ?>
                 </div>
             </div>

@@ -5,16 +5,17 @@ namespace App\Models;
 class moto
 {
     public ?int $id;
-    public string $nome_moto;
-    public string $data_nascimento;
+    public string $modelo;
+    public int $ano;
+    public int $Montadora_id;
+    public bool $disponivel;
 
-    public string $nacionalidade;
-
-    public function __construct(?int $id, string $nome_moto, string $data_nascimento, string $nacionalidade)
+    public function __construct(?int $id, string $modelo, int $ano, int $Montadora_id, bool $disponivel)
     {
         $this->id = $id;
-        $this->nome_moto = $nome_moto;
-        $this->data_nascimento = $data_nascimento;
-        $this->nacionalidade = $nacionalidade;
+        $this->modelo = $modelo;
+        $this->ano = $ano;
+        $this->Montadora_id = $Montadora_id;
+        $this->disponivel = $disponivel;
     }
 }

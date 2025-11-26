@@ -17,7 +17,7 @@
                     <input type="text" class="form-control" value="<?= $this->e($carro['titulo']) ?>" readonly>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label"><strong>Ano de publicação:</strong></label>
+                    <label class="form-label"><strong>Ano:</strong></label>
                     <input type="text" class="form-control" value="<?= $this->e($carro['ano_publicacao']) ?>" readonly>
                 </div>
                 <div class="mb-3">

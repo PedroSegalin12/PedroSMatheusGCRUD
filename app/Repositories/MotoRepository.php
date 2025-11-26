@@ -21,28 +21,39 @@ class motoRepository
         $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function find(int $id): ?array
     {
         $stmt = Database::getConnection()->prepare("SELECT * FROM motos WHERE id = ?");
         $stmt->execute([$id]);
-        $row = $stmt->fetch();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row ?: null;
     }
 
     public function create(moto $moto): int
     {
-        $stmt = Database::getConnection()->prepare("INSERT INTO motos (nome_moto, data_nascimento, nacionalidade) VALUES (?, ?, ?)");
-        $stmt->execute([$moto->nome_moto, $moto->data_nascimento, $moto->nacionalidade]);
+        $stmt = Database::getConnection()->prepare("INSERT INTO motos (modelo, ano, Montadora_id, disponivel) VALUES (?, ?, ?, ?)");
+        $stmt->execute([
+            $moto->modelo,
+            $moto->ano,
+            $moto->Montadora_id,
+            $moto->disponivel ? 1 : 0
+        ]);
         return (int)Database::getConnection()->lastInsertId();
     }
 
     public function update(moto $moto): bool
     {
-        $stmt = Database::getConnection()->prepare("UPDATE motos SET nome_moto = ?, data_nascimento = ?, nacionalidade = ? WHERE id = ?");
-        return $stmt->execute([$moto->nome_moto, $moto->data_nascimento, $moto->nacionalidade, $moto->id]);
+        $stmt = Database::getConnection()->prepare("UPDATE motos SET modelo = ?, ano = ?, Montadora_id = ?, disponivel = ? WHERE id = ?");
+        return $stmt->execute([
+            $moto->modelo,
+            $moto->ano,
+            $moto->Montadora_id,
+            $moto->disponivel ? 1 : 0,
+            $moto->id
+        ]);
     }
 
     public function delete(int $id): bool
@@ -55,7 +66,7 @@ class motoRepository
     {
         $stmt = Database::getConnection()->prepare("SELECT * FROM motos ORDER BY id DESC");
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getArray(): array
@@ -65,7 +76,7 @@ class motoRepository
         $motos = $stmt->fetchAll();
         $return = [];
         foreach ($motos as $moto) {
-            $return[$moto['id']] = $moto['nome_moto'];
+            $return[$moto['id']] = $moto['modelo'];
         }
         return $return;
     }

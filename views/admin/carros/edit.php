@@ -16,9 +16,9 @@
                     <?php endif; ?>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="ano_publicacao" class="form-label">Ano de Publicação</label>
+                    <label for="ano_publicacao" class="form-label">Ano</label>
                     <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao"
-                        placeholder="Digite o ano de publicação" value="<?= $this->e(($carro['ano_publicacao'] ?? '')) ?>">
+                        placeholder="Digite o ano" value="<?= $this->e(($carro['ano_publicacao'] ?? '')) ?>">
                     <?php if (!empty($errors['ano_publicacao'])): ?>
                         <div class="text-danger"><?= $this->e($errors['ano_publicacao']) ?></div>
                     <?php endif; ?>

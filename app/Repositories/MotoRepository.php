@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Core\Database;
-use App\Models\moto;
+use App\Models\Moto;
 use PDO;
 
 class MotoRepository
@@ -32,7 +32,7 @@ class MotoRepository
         return $row ?: null;
     }
 
-    public function create(moto $moto): int
+    public function create(Moto $moto): int
     {
         $stmt = Database::getConnection()->prepare("INSERT INTO motos (modelo, ano, Montadora_id, disponivel) VALUES (?, ?, ?, ?)");
         $stmt->execute([
@@ -44,7 +44,7 @@ class MotoRepository
         return (int)Database::getConnection()->lastInsertId();
     }
 
-    public function update(moto $moto): bool
+    public function update(Moto $moto): bool
     {
         $stmt = Database::getConnection()->prepare("UPDATE motos SET modelo = ?, ano = ?, Montadora_id = ?, disponivel = ? WHERE id = ?");
         return $stmt->execute([

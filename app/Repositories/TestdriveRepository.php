@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Core\Database;
-use App\Models\testdrive;
+use App\Models\Testdrive;
 use PDO;
 
 class TestdriveRepository
@@ -25,18 +25,18 @@ class TestdriveRepository
         $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, testdrive::class);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Testdrive::class);
     }
 
-    public function find(int $id): ?testdrive
+    public function find(int $id): ?Testdrive
     {
         $stmt = Database::getConnection()->prepare("SELECT * FROM {$this->table} WHERE id = ?");
         $stmt->execute([$id]);
-        $row = $stmt->fetchObject(testdrive::class);
-        return $row instanceof testdrive ? $row : null;
+        $row = $stmt->fetchObject(Testdrive::class);
+        return $row instanceof Testdrive ? $row : null;
     }
 
-    public function create(testdrive $testdrive): int
+    public function create(Testdrive $testdrive): int
     {
         $sql = "INSERT INTO {$this->table} (id_user, id_carro, data_testdrive, data_devolucao, status) 
                 VALUES (?, ?, ?, ?, ?)";
@@ -51,7 +51,7 @@ class TestdriveRepository
         return (int)Database::getConnection()->lastInsertId();
     }
 
-    public function update(testdrive $testdrive): bool
+    public function update(Testdrive $testdrive): bool
     {
         $sql = "UPDATE {$this->table} 
                 SET id_user = ?, id_carro = ?, data_testdrive = ?, data_devolucao = ?, status = ? 
@@ -77,7 +77,7 @@ class TestdriveRepository
     {
         $stmt = Database::getConnection()->prepare("SELECT * FROM {$this->table} ORDER BY id DESC");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, testdrive::class);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Testdrive::class);
     }
 
     public function getArray(): array

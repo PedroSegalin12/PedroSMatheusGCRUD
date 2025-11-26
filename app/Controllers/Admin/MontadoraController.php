@@ -35,7 +35,7 @@ class MontadoraController
         $total = $this->repo->countAll();
         $Montadoras = $this->repo->paginate($page, $perPage);
         $pages = (int)ceil($total / $perPage);
-        $html = $this->view->render('admin/montadoras/index', compact('Montadoras', 'page', 'pages'));
+        $html = $this->view->render('admin/montadoras/index', compact('montadoras', 'page', 'pages'));
         return new Response($html);
     }
 

@@ -4,7 +4,7 @@
 <div class="card shadow-sm" id="formView">
     <?php $this->insert('partials/admin/form/header', ['title' => 'Editar Montadora']) ?>
     <div class="card-body">
-        <form method="post" action="/admin/Montadoras/update" class="">
+        <form method="post" action="/admin/montadoras/update" class="">
             <input type="hidden" name="id" value="<?= $this->e($Montadora['id']) ?>">
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -40,7 +40,7 @@
                 <button type="reset" class="btn btn-secondary">
                     <i class="bi bi-x-lg"></i> Limpar
                 </button>
-                <a href="/admin/Montadoras" class="btn align-self-end">
+                <a href="/admin/montadoras" class="btn align-self-end">
                     <i class="bi bi-x-lg"></i> Cancelar
                 </a>
             </div>

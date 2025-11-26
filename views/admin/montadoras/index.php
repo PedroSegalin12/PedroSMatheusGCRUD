@@ -4,7 +4,7 @@
 <div class="card shadow-sm" id="tableView">
     <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
         <h5 class="mb-0 fw-semibold">Lista de Montadoras</h5>
-        <a href="/admin/Montadoras/create" class="btn btn-primary">
+        <a href="/admin/montadoras/create" class="btn btn-primary">
             <i class="bi bi-plus-lg"></i> Nova Montadora
         </a>
     </div>
@@ -29,13 +29,13 @@
                         <td><?= $this->e($Montadora['telefone']) ?></td>
                         <td>
                             <div class="action-buttons">
-                                <a class="btn btn-sm btn-secondary" href="/admin/Montadoras/show?id=<?= $this->e($Montadora['id']) ?>">
+                                <a class="btn btn-sm btn-secondary" href="/admin/montadoras/show?id=<?= $this->e($Montadora['id']) ?>">
                                     <i class="bi bi-eye"></i> Ver
                                 </a>
-                                <a class="btn btn-sm btn-primary" href="/admin/Montadoras/edit?id=<?= $this->e($Montadora['id']) ?>">
+                                <a class="btn btn-sm btn-primary" href="/admin/montadoras/edit?id=<?= $this->e($Montadora['id']) ?>">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
-                                <form class="inline" action="/admin/Montadoras/delete" method="post"
+                                <form class="inline" action="/admin/montadoras/delete" method="post"
                                       onsubmit="return confirm('Tem certeza que deseja excluir esta Montadora? (<?= $this->e($Montadora['nome']) ?>)');">
                                     <input type="hidden" name="id" value="<?= $this->e($Montadora['id']) ?>">
                                     <?= \App\Core\Csrf::input() ?>
@@ -58,7 +58,7 @@
         <?php if ($i == $page): ?>
             <strong>[<?= $i ?>]</strong>
         <?php else: ?>
-            <a href="/admin/Montadoras?page=<?= $i ?>"><?= $i ?></a>
+            <a href="/admin/montadoras?page=<?= $i ?>"><?= $i ?></a>
         <?php endif; ?>
     <?php endfor; ?>
 </div>

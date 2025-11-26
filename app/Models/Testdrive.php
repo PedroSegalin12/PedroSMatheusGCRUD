@@ -17,7 +17,7 @@ class testdrive
         int $id_carro,
         string $data_testdrive,
         ?string $data_devolucao = null,
-        string $status = 'testdrive'
+        string $status = 'pendente'
     ) {
         $this->id = $id;
         $this->id_user = $id_user;

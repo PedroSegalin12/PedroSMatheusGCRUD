@@ -9,12 +9,20 @@ final class RemoveMotoIdFromCarros extends AbstractMigration
     {
         $table = $this->table('carros');
         
-        // Remove a foreign key primeiro
-        $table->dropForeignKey('moto_id');
+        // Tenta remover a foreign key primeiro (pode não existir se já foi removida ou se a tabela foi criada sem ela)
+        try {
+            $table->dropForeignKey('moto_id');
+        } catch (\Exception $e) {
+            // Ignora se a foreign key não existir
+        }
         
-        // Remove a coluna moto_id
-        $table->removeColumn('moto_id')
-              ->save();
+        // Tenta remover a coluna moto_id (pode não existir se a tabela foi criada sem ela)
+        try {
+            $table->removeColumn('moto_id')
+                  ->save();
+        } catch (\Exception $e) {
+            // Ignora se a coluna não existir (tabela já foi criada sem ela)
+        }
     }
 }
 

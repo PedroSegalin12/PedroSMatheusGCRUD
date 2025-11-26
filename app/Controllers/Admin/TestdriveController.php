@@ -38,7 +38,18 @@ class TestdriveController
 
     public function create(): Response
     {
-        $html = $this->view->render('admin/testdrives/create', ['csrf' => Csrf::token(), 'errors' => []]);
+        $userRepo = new \App\Repositories\UserRepository();
+        $carroRepo = new \App\Repositories\CarroRepository();
+        $users = $userRepo->findAll();
+        $carros = $carroRepo->findAll();
+        
+        $html = $this->view->render('admin/testdrives/create', [
+            'csrf' => Csrf::token(), 
+            'errors' => [],
+            'old' => [],
+            'users' => $users,
+            'carros' => $carros
+        ]);
         return new Response($html);
     }
 
@@ -50,10 +61,17 @@ class TestdriveController
 
         $errors = $this->service->validate($request->request->all());
         if ($errors) {
+            $userRepo = new \App\Repositories\UserRepository();
+            $carroRepo = new \App\Repositories\CarroRepository();
+            $users = $userRepo->findAll();
+            $carros = $carroRepo->findAll();
+            
             $html = $this->view->render('admin/testdrives/create', [
                 'csrf' => Csrf::token(),
                 'errors' => $errors,
-                'old' => $request->request->all()
+                'old' => $request->request->all(),
+                'users' => $users,
+                'carros' => $carros
             ]);
             return new Response($html, 422);
         }
@@ -80,10 +98,27 @@ class TestdriveController
         $testdrive = $this->repo->find($id);
         if (!$testdrive) return new Response('Testdrive não encontrado', 404);
 
+        $userRepo = new \App\Repositories\UserRepository();
+        $carroRepo = new \App\Repositories\CarroRepository();
+        $users = $userRepo->findAll();
+        $carros = $carroRepo->findAll();
+        
+        // Converter objeto para array se necessário
+        $testdriveArray = is_object($testdrive) ? [
+            'id' => $testdrive->id,
+            'id_user' => $testdrive->id_user,
+            'id_carro' => $testdrive->id_carro,
+            'data_testdrive' => $testdrive->data_testdrive,
+            'data_devolucao' => $testdrive->data_devolucao,
+            'status' => $testdrive->status
+        ] : $testdrive;
+
         $html = $this->view->render('admin/testdrives/edit', [
-            'testdrive' => $testdrive,
+            'testdrive' => $testdriveArray,
             'csrf' => Csrf::token(),
-            'errors' => []
+            'errors' => [],
+            'users' => $users,
+            'carros' => $carros
         ]);
         return new Response($html);
     }
@@ -95,10 +130,27 @@ class TestdriveController
         $data = $request->request->all();
         $errors = $this->service->validate($data);
         if ($errors) {
+            $userRepo = new \App\Repositories\UserRepository();
+            $carroRepo = new \App\Repositories\CarroRepository();
+            $users = $userRepo->findAll();
+            $carros = $carroRepo->findAll();
+            
+            $existing = $this->repo->find((int)$data['id']);
+            $testdriveArray = is_object($existing) ? [
+                'id' => $existing->id,
+                'id_user' => $existing->id_user,
+                'id_carro' => $existing->id_carro,
+                'data_testdrive' => $existing->data_testdrive,
+                'data_devolucao' => $existing->data_devolucao,
+                'status' => $existing->status
+            ] : $existing;
+            
             $html = $this->view->render('admin/testdrives/edit', [
-                'testdrive' => array_merge($this->repo->find((int)$data['id']), $data),
+                'testdrive' => array_merge($testdriveArray, $data),
                 'csrf' => Csrf::token(),
-                'errors' => $errors
+                'errors' => $errors,
+                'users' => $users,
+                'carros' => $carros
             ]);
             return new Response($html, 422);
         }

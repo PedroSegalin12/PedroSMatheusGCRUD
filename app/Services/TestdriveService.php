@@ -15,8 +15,8 @@ class testdriveService
         $id_carro = filter_var($data['id_carro'] ?? '', FILTER_VALIDATE_INT);
         $data_testdrive = trim($data['data_testdrive'] ?? '');
         $data_devolucao = trim($data['data_devolucao'] ?? '');
-        $status = trim($data['status'] ?? 'testdrive');
-        $valid_statuses = ['testdrive', 'devolvido'];
+        $status = trim($data['status'] ?? 'pendente');
+        $valid_statuses = ['pendente', 'finalizado', 'testdrive', 'devolvido'];
 
         if ($id_user === false || $id_user <= 0) {
             $errors['id_user'] = 'ID do Usuário é obrigatório e deve ser um número inteiro válido.';
@@ -27,7 +27,7 @@ class testdriveService
         }
 
         if (!in_array($status, $valid_statuses, true)) {
-            $errors['status'] = 'Status inválido. Deve ser "testdrive" ou "devolvido".';
+            $errors['status'] = 'Status inválido. Deve ser "pendente", "finalizado", "testdrive" ou "devolvido".';
         }
 
         if ($data_testdrive === '') {
@@ -57,7 +57,7 @@ class testdriveService
             (int)$data['id_carro'],
             trim($data['data_testdrive']),
             trim($data['data_devolucao'] ?? null),
-            trim($data['status'] ?? 'testdrive')
+            trim($data['status'] ?? 'pendente')
         );
     }
 }

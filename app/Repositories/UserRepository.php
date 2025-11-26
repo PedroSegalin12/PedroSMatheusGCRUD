@@ -70,4 +70,11 @@ class UserRepository
         $st->execute([$email, $id]);
         return $st->fetch() ?: null;
     }
+
+    public function findAll(): array
+    {
+        $stmt = Database::getConnection()->prepare("SELECT * FROM users ORDER BY id DESC");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

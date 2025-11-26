@@ -13,7 +13,7 @@
                         <option value="">Selecione o Usuário</option>
                         <?php foreach ($users as $user): ?>
                             <option value="<?= $this->e($user['id']) ?>" <?= ($old['id_user'] ?? '') == $user['id'] ? 'selected' : '' ?>>
-                                <?= $this->e($user['nome']) ?>
+                                <?= $this->e($user['name']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -29,7 +29,7 @@
                     <option value="">Selecione o Carro</option>
                     <?php foreach ($carros as $carro): ?>
                         <option value="<?= $this->e($carro['id']) ?>" <?= ($old['id_carro'] ?? '') == $carro['id'] ? 'selected' : '' ?>>
-                            <?= $this->e($carro['nome']) ?>
+                            <?= $this->e($carro['titulo']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Models\Montadora;
 
-class Montadoraservice {
+class MontadoraService {
     public function validate(array $data): array {
         $errors = [];
         $nome = trim($data['nome'] ?? '');

@@ -47,7 +47,32 @@ class MontadoraRepository
 
     public function delete(int $id): bool
     {
-        $stmt = Database::getConnection()->prepare("DELETE FROM Montadoras WHERE id = ?");
+        $conn = Database::getConnection();
+
+        // --- 1. Buscar carros da montadora ---
+        $stmt = $conn->prepare("SELECT id FROM carros WHERE Montadora_id = ?");
+        $stmt->execute([$id]);
+        $carros = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // --- 2. Deletar cada carro com o método oficial ---
+        $carroRepo = new CarroRepository();
+        foreach ($carros as $carroId) {
+            $carroRepo->delete($carroId);
+        }
+
+        // --- 3. Buscar motos da montadora ---
+        $stmt = $conn->prepare("SELECT id FROM motos WHERE Montadora_id = ?");
+        $stmt->execute([$id]);
+        $motos = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // --- 4. Deletar cada moto ---
+        $motoRepo = new MotoRepository();
+        foreach ($motos as $motoId) {
+            $motoRepo->delete($motoId);
+        }
+
+        // --- 5. Finalmente deletar a montadora ---
+        $stmt = $conn->prepare("DELETE FROM montadoras WHERE id = ?");
         return $stmt->execute([$id]);
     }
 
@@ -70,3 +95,4 @@ class MontadoraRepository
         return $return;
     }
 }
+?>

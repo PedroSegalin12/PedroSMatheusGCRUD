@@ -1,3 +1,4 @@
+
 <?php $this->layout('layouts/admin', ['title' => 'Detalhes do Testdrive']) ?>
 
 <?php $this->start('body') ?>
@@ -10,28 +11,28 @@
             <form>
                 <div class="mb-3">
                     <label class="form-label"><strong>ID:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id ?? $testdrive['id'] ?? '') ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id ?? '') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>ID do Usuário:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id_user ?? $testdrive['id_user'] ?? '') ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id_user ?? '') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>ID do Carro:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id_carro ?? $testdrive['id_carro'] ?? '') ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e($testdrive->id_carro ?? '') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Data do Testdrive:</strong></label>
                     <input type="date" class="form-control"
-                        value="<?= $this->e($testdrive->data_testdrive ?? $testdrive['data_testdrive'] ?? '') ?>" readonly>
+                        value="<?= $this->e($testdrive->data_testdrive ?? '') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Data de Devolução:</strong></label>
-                    <input type="date" class="form-control" value="<?= $this->e($testdrive->data_devolucao ?? $testdrive['data_devolucao'] ?? '') ?>" readonly>
+                    <input type="date" class="form-control" value="<?= $this->e($testdrive->data_devolucao ?? '') ?>" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><strong>Status:</strong></label>
-                    <input type="text" class="form-control" value="<?= $this->e(ucfirst($testdrive->status ?? $testdrive['status'] ?? '')) ?>" readonly>
+                    <input type="text" class="form-control" value="<?= $this->e(ucfirst($testdrive->status ?? '')) ?>" readonly>
                 </div>
                 <div class="text-end">
                     <a href="javascript:history.back()" class="btn btn-secondary">Voltar</a>

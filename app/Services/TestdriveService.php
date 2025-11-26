@@ -50,14 +50,18 @@ class testdriveService
     }
 
     public function make(array $data): testdrive
-    {
-        return new testdrive(
-            $data['id'] ?? null,
-            (int)$data['id_user'],
-            (int)$data['id_carro'],
-            trim($data['data_testdrive']),
-            trim($data['data_devolucao'] ?? null),
-            trim($data['status'] ?? 'pendente')
-        );
-    }
+{
+    $t = new testdrive();
+
+    $t->id = $data['id'] ?? null;
+    $t->id_user = (int)($data['id_user'] ?? 0);
+    $t->id_carro = (int)($data['id_carro'] ?? 0);
+    $t->data_testdrive = $data['data_testdrive'] ?? null;
+    $t->data_devolucao = $data['data_devolucao'] ?? null;
+    $t->status = $data['status'] ?? 'pendente';
+
+    return $t;
 }
+}
+
+?>

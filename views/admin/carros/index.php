@@ -26,9 +26,9 @@
                 <?php foreach ($carros as $carro): ?>
                     <tr>
                         <td><?= $this->e($carro['id']) ?></td>
-                        <td><?= $this->e($carro['nome']) ?></td>
-                        <td><?= $this->e($carro['ano']) ?></td>
-                        <td><?= $this->e($carro['categoria']) ?></td>
+                        <td><?= $this->e($carro['titulo']) ?></td>
+                        <td><?= $this->e($carro['ano_publicacao']) ?></td>
+                        <td><?= $this->e($carro['genero']) ?></td>
                         <td><?= $this->e($carro['disponivel'] ? 'Sim' : 'Não') ?></td>
                         <td><?= $this->e($Montadoras[$carro['Montadora_id']] ?? 'Desconhecido') ?></td>
                         <td>
@@ -42,7 +42,7 @@
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 <form class="inline" action="/admin/carros/delete" method="post"
-                                      onsubmit="return confirm('Tem certeza que deseja excluir este carro? (<?= $this->e($carro['nome']) ?>)');">
+                                      onsubmit="return confirm('Tem certeza que deseja excluir este carro? (<?= $this->e($carro['titulo']) ?>)');">
                                     <input type="hidden" name="id" value="<?= $this->e($carro['id']) ?>">
                                     <?= \App\Core\Csrf::input() ?>
                                     <button type="submit" class="btn btn-sm btn-danger">

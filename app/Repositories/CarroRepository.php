@@ -64,8 +64,15 @@ class CarroRepository
 
     public function delete(int $id): bool
     {
-        $stmt = Database::getConnection()->prepare("DELETE FROM carros WHERE id = ?");
-        return $stmt->execute([$id]);
+        $conn = Database::getConnection();
+
+    // 1. Excluir testdrives relacionados ao carro
+    $stmt = $conn->prepare("DELETE FROM testdrives WHERE id_carro = ?");
+    $stmt->execute([$id]);
+
+    // 2. Agora excluir o carro
+    $stmt = $conn->prepare("DELETE FROM carros WHERE id = ?");
+    return $stmt->execute([$id]);
     }
 
     public function findAll(): array
@@ -74,4 +81,15 @@ class CarroRepository
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function findByMontadoraId(int $Montadora_id): array
+{
+    $stmt = Database::getConnection()->prepare(
+        "SELECT * FROM carros WHERE Montadora_id = ?"
+    );
+    $stmt->execute([$Montadora_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+}
+
+?>

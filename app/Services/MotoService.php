@@ -1,9 +1,9 @@
 <?php
 namespace App\Services;
 
-use App\Models\moto;
+use App\Models\Moto;
 
-class motoService {
+class MotoService {
     /**
      * Valida os dados de entrada para a criação ou atualização de uma moto.
      * @param array $data Os dados a serem validados (modelo, ano, Montadora_id).
@@ -36,15 +36,15 @@ class motoService {
     /**
      * Cria (ou constrói) uma nova instância do modelo moto.
      * @param array $data Os dados validados da moto.
-     * @return moto A instância da moto.
+     * @return Moto A instância da moto.
      */
-    public function make(array $data): moto {
+    public function make(array $data): Moto {
         $id = isset($data['id']) ? (int)$data['id'] : null;
         $modelo = trim($data['modelo'] ?? '');
         $ano = (int)($data['ano'] ?? 0);
         $Montadora_id = (int)($data['Montadora_id'] ?? 0);
         $disponivel = isset($data['disponivel']) ? (bool)$data['disponivel'] : true;
 
-        return new moto($id, $modelo, $ano, $Montadora_id, $disponivel);
+        return new Moto($id, $modelo, $ano, $Montadora_id, $disponivel);
     }
 }

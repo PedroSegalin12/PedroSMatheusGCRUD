@@ -6,7 +6,7 @@ use App\Core\Database;
 use App\Models\testdrive;
 use PDO;
 
-class testdriveRepository
+class TestdriveRepository
 {
     private string $table = 'testdrives'; // tabela correta
 

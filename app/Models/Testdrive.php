@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class testdrive
+class Testdrive
 {
     public ?int $id = null;
     public ?int $id_user = null;

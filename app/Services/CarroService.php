@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\carro;
+use App\Models\Carro;
 
-class carroService {
+class CarroService {
     public function validate(array $data): array {
         $errors = [];
         $titulo = trim($data['titulo'] ?? '');
@@ -19,7 +19,7 @@ class carroService {
         return $errors;
     }
 
-    public function make(array $data): carro {
+    public function make(array $data): Carro {
         $id = isset($data['id']) ? (int)$data['id'] : null;
         $titulo = trim($data['titulo'] ?? '');
         $ano_publicacao = ($data['ano_publicacao'] ?? '') !== '' ? (int)$data['ano_publicacao'] : null;
@@ -27,6 +27,6 @@ class carroService {
         $disponivel = isset($data['disponivel']) ? (bool)$data['disponivel'] : true;
         $Montadora_id = (int)($data['Montadora_id'] ?? 0);
 
-        return new carro($id, $titulo, $ano_publicacao, $genero, $disponivel, $Montadora_id);
+        return new Carro($id, $titulo, $ano_publicacao, $genero, $disponivel, $Montadora_id);
     }
 }

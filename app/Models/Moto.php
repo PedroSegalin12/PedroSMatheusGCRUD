@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class moto
+class Moto
 {
     public ?int $id;
     public string $modelo;

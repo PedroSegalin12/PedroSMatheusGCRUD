@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\testdrive;
+use App\Models\Testdrive;
 use DateTime;
 
-class testdriveService
+class TestdriveService
 {
     public function validate(array $data): array
     {
@@ -49,9 +49,9 @@ class testdriveService
         return $errors;
     }
 
-    public function make(array $data): testdrive
+    public function make(array $data): Testdrive
 {
-    $t = new testdrive();
+    $t = new Testdrive();
 
     $t->id = $data['id'] ?? null;
     $t->id_user = (int)($data['id_user'] ?? 0);

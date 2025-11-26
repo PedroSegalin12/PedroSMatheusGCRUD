@@ -6,7 +6,7 @@ use App\Core\Database;
 use App\Models\moto;
 use PDO;
 
-class motoRepository
+class MotoRepository
 {
     public function countAll(): int
     {
